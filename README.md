@@ -57,6 +57,7 @@ Conventionally a client would send one's cleartext password to the server over T
 The disadvantages of this are
 - It's computationally expensive for the server. It's actually designed to be computationally expensive. 
 - In the unlikely compromise from a passive man in the middle attack, one's credentials could be sniffed.
+- It's cheap for clients to brute force the server by attempting to log into multiple user accounts
 
 Another disadvantage is it's also cheap for the client to perform brute force attacks against multiple users against the server. If an attacker got a list of all users for example, they could send many concurrent requests to the server and either cause a DoS condition, or possibly log into a user account.
 
