@@ -1,10 +1,10 @@
 # Client side secure hashing
-Conventionally secure hashing is done server side. This repository demonstrates there are advantages to hashing client side, which are covered in this readme. 
+Conventionally secure hashing is done server side. This repository demonstrates there are advantages to hashing client side, which are covered in this readme.
 
 # Demos
 For a simple demo of bcrypt done clientside, see here https://security.love/clientHashing/
 
-For a more complicated server-client demo, you can follow the setup instrucitons seen below
+For a more complicated server-client demo, you can follow the setup instructions seen below
 
 ```
 git clone https://github.com/dxa4481/clientHashing.git
@@ -15,7 +15,7 @@ node start
 
 Then browse to http://localhost:3000/client.html
 
-Note: These demos leverage the [WebCryptoAPI](https://www.w3.org/TR/WebCryptoAPI/) and are very effecient on modern browsers. They do not rely on *purely* Javascript hashing.
+Note: These demos leverage the [WebCryptoAPI](https://www.w3.org/TR/WebCryptoAPI/) and are very efficient on modern browsers. They do not rely on *purely* Javascript hashing.
 
 ## What is secure password hashing?
 Secure password hashing is a specially crafted hash algorithm that's designed to slow an attacker down in the event of a hash leak. Here's a few examples of secure hashing functions
@@ -61,7 +61,7 @@ The disadvantages of this are
 Another disadvantage is it's also cheap for the client to perform brute force attacks against multiple users against the server. If an attacker got a list of all users for example, they could send many concurrent requests to the server and either cause a DoS condition, or possibly log into a user account.
 
 #### Client side hashing addresses these issues
-When hashing clientside the server has very little load on the server when logging a user in. The hashing load is distributed to all of the cuncurrent users. Credentials are also never transmitted over TLS; only the user's hash is sent to the server. It's also extremely expensive for a client to attempt to brute force the server's login across multiple users. 
+When hashing clientside the server has very little load on the server when logging a user in. The hashing load is distributed to all of the concurrent users. Credentials are also never transmitted over TLS; only the user's hash is sent to the server. It's also extremely expensive for a client to attempt to brute force the server's login across multiple users. 
 
 ## What does it look like?
 Because these secure password hashing algorithms use a salt, when user's log in, the server will need to present the user with a salt. To prevent [Pass the Hash](https://en.wikipedia.org/wiki/Pass_the_hash) like attacks, the server will also need to perform one last final hash on the user's presented hash. The full workflow is shown below
@@ -105,4 +105,4 @@ There are some drawbacks to this.
 - User's need Javascript enabled to login
 - Less capable client machines may experience issues logging in
 
-Addressing the last bullet, it took my phone (an HTC One m7) approximatly 4 seconds to complete the simple demo of client side bcrypt.
+Addressing the last bullet, it took my phone (an HTC One m7) approximately 4 seconds to complete the simple demo of client side bcrypt.
