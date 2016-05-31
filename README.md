@@ -59,7 +59,7 @@ The disadvantages of this are
 - In the unlikely compromise from a passive man in the middle attack, one's credentials could be sniffed.
 - It's cheap for clients to brute force the server by attempting to log into multiple user accounts
 
-Another disadvantage is it's also cheap for the client to perform brute force attacks against multiple users against the server. If an attacker got a list of all users for example, they could send many concurrent requests to the server and either cause a DoS condition, or possibly log into a user account.
+Addressing the last bullet point, if an attacker got a list of all users for example, they could send many concurrent requests to the server and either cause a DoS condition, or possibly log into a user account.
 
 #### Client side hashing addresses these issues
 When hashing clientside the server has very little load on the server when logging a user in. The hashing load is distributed to all of the concurrent users. Credentials are also never transmitted over TLS; only the user's hash is sent to the server. It's also extremely expensive for a client to attempt to brute force the server's login across multiple users. 
