@@ -24,7 +24,7 @@ Secure password hashing is a specially crafted hash algorithm that's designed to
 - pbkdf2
 - scrypt
 
-They're typically very CPU intensive by design, and they all have salts built into them preventing [rainbow tables](https://en.wikipedia.org/wiki/Rainbow_table)
+They are typically very CPU intensive, by design, and they all have salts built into them preventing [rainbow tables](https://en.wikipedia.org/wiki/Rainbow_table) attacks. Additionally these hash functions all have a configurable number of rounds, enabling the developer to set how slow they want the hash function to be.
 
 Here's an example: with a non-secure password hashing algorithm, sha256, on my computer I can crack at a rate of 18,000,000 hashes / second as seen below. Note: this can potentially be sped up with a rainbow table.
 
@@ -53,7 +53,7 @@ Estimated.: --:--:--:--
 It's about **x360,000** slower.
 
 ## Why do it client side?
-Conventionally a client would send one's cleartext password to the server over TLS, this password would be hashed serverside, and checked against the hash stored in the DBMS. 
+Conventionally a client would send one's cleartext password to the server over TLS. This password would be hashed serverside, and checked against the hash stored in the DBMS. 
 The disadvantages of this are
 - It's computationally expensive for the server. It's actually designed to be computationally expensive. 
 - In the unlikely compromise from a passive man in the middle attack, one's credentials could be sniffed.
@@ -62,7 +62,7 @@ The disadvantages of this are
 Addressing the last bullet point, if an attacker got a list of all users for example, they could send many concurrent requests to the server and either cause a DoS condition, or possibly log into a user account.
 
 #### Client side hashing addresses these issues
-When hashing clientside the server has very little load on the server when logging a user in. The hashing load is distributed to all of the concurrent users. Credentials are also never transmitted over TLS; only the user's hash is sent to the server. It's also extremely expensive for a client to attempt to brute force the server's login across multiple users. 
+When hashing clientside there is very little load on the server when logging a user in. The hashing CPU load is distributed to all of the concurrent users. Cleartext credentials (over TLS) are also never transmitted to the server; only the user's hash is sent to the server. It's also extremely expensive for a client to attempt to brute force the server's login across multiple users. 
 
 ## What does it look like?
 Because these secure password hashing algorithms use a salt, when user's log in, the server will need to present the user with a salt. To prevent [Pass the Hash](https://en.wikipedia.org/wiki/Pass_the_hash) like attacks, the server will also need to perform one last final hash on the user's presented hash. The full workflow is shown below
