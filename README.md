@@ -104,6 +104,9 @@ app.post('/login', function(req, res){
 There are some drawbacks to this.
 - User enumeration: requesting salt for an unauthenticated user could help an attacker identify if an account exists or not
 - User's need Javascript enabled to login
+- Password complexity requirements would have to be maintained clientside
 - Less capable client machines may experience issues logging in
+
+Addressing the second to last bullet point, because the server no longer touches the user's actual password, you would have to rely on [client side password validation](https://github.com/dropbox/zxcvbn), which is not ideal because users could theoretically go out of their way to bypass the application protections and set their passwords to be very weak.
 
 Addressing the last bullet, it took my phone (an HTC One m7) approximately 4 seconds to complete the simple demo of client side bcrypt.
