@@ -15,7 +15,7 @@ node start
 
 Then browse to http://localhost:3000/client.html
 
-Note: These demos leverage the [WebCryptoAPI](https://www.w3.org/TR/WebCryptoAPI/) and are very efficient on modern browsers. They do not rely on *purely* Javascript hashing.
+Note: These demos leverage the [WebCryptoAPI](https://www.w3.org/TR/WebCryptoAPI/) and are very efficient on modern browsers. They do not rely on *purely* Javascript hashing. See the [bcrypt library](https://github.com/dcodeIO/bcrypt.js) used for more information
 
 ## What is secure password hashing?
 Secure password hashing is a specially crafted hash algorithm that's designed to slow an attacker down in the event of a hash leak. Here's a few examples of secure hashing functions
