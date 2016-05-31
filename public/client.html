@@ -1,0 +1,55 @@
+<html>
+
+    <head>
+        <script src="bcrypt.js"></script>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="text-center">
+            <h1>password:</h1><br>
+            <input autofocus type="password" name="password" id="password">
+            <button class="btn btn-info" onclick="login()">Login</button>
+        </div> 
+        <div>
+            <h5>Register new password:</h5>
+            <input type="password" name="password" id="newPassword">
+            <button onclick="register()">register</button>
+
+        </div>        
+        <script>
+            var bcrypt = dcodeIO.bcrypt;
+            var register = function(){
+                var salt = bcrypt.genSaltSync(10);
+                var password = document.getElementById("newPassword").value;
+                var hash = bcrypt.hashSync(password, salt);
+
+                $.post({
+                    url: "register",
+                    data: JSON.stringify({"hash":hash, "salt": salt}),
+                    contentType: "application/json",
+                    success: function(){
+                        alert("Changed!");
+                    }
+                }); 
+            }
+            var login = function(){
+                $.get({
+                    url: "getSalt",
+                    success: function(data){
+                        var password = document.getElementById("password").value;
+                        var hash = bcrypt.hashSync(password, data.salt);
+                        $.post({
+                            url: "login", 
+                            data: JSON.stringify({"hash": hash}),
+                            contentType: "application/json",
+                            success: function(data){
+                                alert(data.success);
+                            }
+                        });
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>

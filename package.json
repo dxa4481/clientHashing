@@ -1,0 +1,26 @@
+{
+  "name": "client-hashing",
+  "version": "1.0.0",
+  "description": "A demo of hashing done client side",
+  "main": "server.js",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dxa4481/clientHashing.git"
+  },
+  "author": "Dylan Ayrey",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/dxa4481/clientHashing/issues"
+  },
+  "homepage": "https://github.com/dxa4481/clientHashing#readme"
+}

@@ -1,0 +1,17 @@
+<html>
+
+    <head>
+        <script src="bcrypt.js"></script>
+    </head>
+    <body>
+        <h1 id="words">Computing...</h1>
+        <script>
+            setTimeout(function(){ //this is a timer to allow the words Computing to show up
+                var bcrypt = dcodeIO.bcrypt;
+                var salt = "$2a$12$Fg0j.x19986i9LEeOIcuTu";
+                var hash = bcrypt.hashSync("the secret passphrase", salt);
+                document.getElementById("words").innerHTML = "Done!";
+            }, 0)
+        </script>
+    </body>
+</html>
