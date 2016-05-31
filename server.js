@@ -22,8 +22,6 @@ app.get('/getSalt', function(req, res){
 
 app.post('/login', function(req, res){
     var usersHash = crypto.createHash('sha256').update(req.body.hash, 'utf8').digest("hex");
-    console.log(hash);
-    console.log(usersHash);
     res.json({success: (hash == usersHash)})
 });
 
