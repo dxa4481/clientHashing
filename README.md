@@ -1,5 +1,5 @@
 # Client side secure hashing
-Conventionally secure hashing is done server side. This repository demonstrates there are advantages to hashing client side, which are covered in this readme.
+Conventionally secure hashing is done server side. This repository demonstrates there are advantages to hashing client side, which are covered in this readme. Precautions are taken to prevent pass-the-hash by adding an additional fast sha256 hash server side.
 
 # Demos
 For a simple demo of bcrypt done clientside, see here https://security.love/clientHashing/
